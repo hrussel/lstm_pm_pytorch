@@ -1,19 +1,24 @@
+# LSTM Pose-Machines in Pytorch
+
+This repo was forked from [HowieMa/lstm_pm_pytorch](https://github.com/HowieMa/lstm_pm_pytorch).
+I updated files to run on python 3.6 and pytorch 1.6.
+For questions, comments or bug report, submit an issue or make a pull request.
+-----
 # lstm_pm_pytorch
+
 implementation of LSTM Pose Machines with Pytorch
 
-This is pytorch implement of [LSTM Pose Machines](https://arxiv.org/pdf/1712.06316.pdf)
+This is a pytorch implementation of [LSTM Pose Machines](https://arxiv.org/pdf/1712.06316.pdf)
 
-Please note that this model is used for my own datasets. But the architecture and training are very close to the original model, please feel free to use it for your own project.
-
-
+Please note that this model is used for [HowieMa/lstm_pm_pytorch](https://github.com/HowieMa/lstm_pm_pytorch) 's own datasets. But the architecture and training are very close to the original model, please feel free to use it for your own project.
 
 ## Prerequisites
-* Python 2.7
+* Python 3.6.10
 * scipy
 * sklearn
 * pillow
-* PyTorch 0.3
-* torchvision 0.1.9
+* PyTorch 1.6.0
+* torchvision 0.7.0
 * pandas
 * numpy
 
@@ -30,4 +35,6 @@ python test_lstm_pm.py
 [LSTM Pose Machines](https://arxiv.org/pdf/1712.06316.pdf)
 
 [lawy623/LSTM_Pose_Machines](https://github.com/lawy623/LSTM_Pose_Machines)
+
+[HowieMa/lstm_pm_pytorch](https://github.com/HowieMa/lstm_pm_pytorch)
 

@@ -14,17 +14,17 @@ from torch.utils.data import DataLoader
 from torchvision import transforms
 
 # multi-GPU
-device_ids = [0, 1, 2, 3]
+device_ids = [0]
 
 # hyper parameter
 temporal = 5
-train_data_dir = '/home/haoyum/UCIHand/train/train_data'
-train_label_dir = '/home/haoyum/UCIHand/train/train_label'
+train_data_dir = './dataset/train_data'
+train_label_dir = './dataset/train_label'
 
 # add parameter
 parser = argparse.ArgumentParser(description='Pytorch LSTM_PM with Penn_Action')
 parser.add_argument('--learning_rate', type=float, default=8e-6, help='learning rate')
-parser.add_argument('--batch_size', default=4, type=int, help='batch size for training')
+parser.add_argument('--batch_size', default=2, type=int, help='batch size for training')
 parser.add_argument('--epochs', default=50, type=int, help='number of epochs for training')
 parser.add_argument('--begin_epoch', default=0, type=int, help='how many epochs the model has been trained')
 parser.add_argument('--save_dir', default='ckpt', type=str, help='directory of checkpoint')
@@ -39,7 +39,7 @@ transform = transforms.Compose([transforms.ToTensor()])
 
 # Build dataset
 train_data = UCIHandPoseDataset(data_dir=train_data_dir, label_dir=train_label_dir, temporal=temporal, train=True)
-print 'Train dataset total number of images sequence is ----' + str(len(train_data))
+print('Train dataset total number of images sequence is ----' + str(len(train_data)))
 
 # Data Loader
 train_dataset = DataLoader(train_data, batch_size=args.batch_size, shuffle=True)
@@ -63,7 +63,7 @@ def train():
     net.train()
     for epoch in range(args.begin_epoch, args.epochs + 1):
 
-        print 'epoch....................................' + str(epoch)
+        print('epoch....................................' + str(epoch))
         for step, (images, label_map, center_map, imgs) in enumerate(train_dataset):
 
             images = Variable(images.cuda() if args.cuda else images)               # 4D Tensor
@@ -79,8 +79,8 @@ def train():
             # ******************** calculate and save loss of each joints ********************
             total_loss = save_loss(predict_heatmaps, label_map, epoch, step, criterion, train=True, temporal=temporal)
             if step % 10 == 0:
-                print '--step .....' + str(step)
-                print '--loss ' + str(float(total_loss))
+                print('--step .....' + str(step))
+                print('--loss ' + str(float(total_loss)))
 
             # ******************** save training heat maps per 100 steps ********************
             if step % 100 == 0:
@@ -95,16 +95,8 @@ def train():
         if epoch % 5 == 0:
             torch.save(net.state_dict(), os.path.join(args.save_dir, 'ucihand_lstm_pm{:d}.pth'.format(epoch)))
 
-    print 'train done!'
+    print('train done!')
 
 
 if __name__ == '__main__':
     train()
-
-
-
-
-
-
-
-

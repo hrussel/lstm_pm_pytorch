@@ -2,11 +2,12 @@
 
 This repo was forked from [HowieMa/lstm_pm_pytorch](https://github.com/HowieMa/lstm_pm_pytorch).
 I updated files to run on python 3.6 and pytorch 1.6.
-For questions, comments or bug report, submit an issue or make a pull request.
------
-# lstm_pm_pytorch
 
-implementation of LSTM Pose Machines with Pytorch
+For questions, comments or bug report, submit an issue or make a pull request.
+
+-----
+
+# lstm_pm_pytorch
 
 This is a pytorch implementation of [LSTM Pose Machines](https://arxiv.org/pdf/1712.06316.pdf)
 
